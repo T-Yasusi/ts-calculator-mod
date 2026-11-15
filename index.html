@@ -1,13 +1,27 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ts-calculator</title>
+    <title>TypeScript Playground with Operator Overload</title>
+
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <h1>TypeScriptと演算子オーバーロード</h1>
+
+    <div class="centering">
+      <label for="template">コード選択:</label>
+      <select id="template">
+        <option value="no-code">-- コードを選択 --</option>
+      </select>
+      <button id="run">実行</button>
+    </div>
+
+    <div id="editor"></div>
+    <h2>コード結果出力</h2>
+    <pre id="output"></pre>
+   
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
+      
