@@ -9,7 +9,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "~7.0.2",
+    "@ampproject/remapping": "^2.3.0",
+    "@babel/plugin-syntax-typescript": "^8.0.3",
+    "@babel/standalone": "^8.1.2",
+    "fast-glob": "^3.3.3",
+    "typescript": "^7.0.2",
     "vite": "^8.3.6"
   },
   "packageManager": "yarn@4.17.1"
