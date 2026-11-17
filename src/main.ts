@@ -10,7 +10,7 @@ document.getElementById('template')?.addEventListener('change', async (e)=> {
     if( value === 'no-code' ) editor.setValue('');
     else{
 //	console.log(value);
-        const response = await fetch(`${value}`);	
+        const response = await fetch(`./${value}`);	
 	if( response.headers.get('content-type') !== 'text/javascript' ){
 	    console.error('Invalid Responce for TS-code');
 	    return;
