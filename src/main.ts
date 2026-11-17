@@ -11,11 +11,11 @@ document.getElementById('template')?.addEventListener('change', async (e)=> {
     else{
 	console.log(value);
         const response = await fetch(`./${value}`);
-	console.log(response);
-	if( response.headers.get('content-type') !== 'text/javascript' ){
-	    console.error('Invalid Responce for TS-code');
-	    return;
-	}
+	console.log(response.headers.get('content-type'));
+//	if( response.headers.get('content-type') !== 'text/javascript' ){
+//	    console.error('Invalid Responce for TS-code');
+	//	    return;
+    // }
         const code = (await response.text());
 	editor.setValue(code);
     }
