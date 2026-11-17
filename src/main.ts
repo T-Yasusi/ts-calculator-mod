@@ -9,8 +9,9 @@ document.getElementById('template')?.addEventListener('change', async (e)=> {
     const value = (e.target as HTMLSelectElement).value;
     if( value === 'no-code' ) editor.setValue('');
     else{
-//	console.log(value);
-        const response = await fetch(`./${value}`);	
+	console.log(value);
+        const response = await fetch(`./${value}`);
+	console.log(response);
 	if( response.headers.get('content-type') !== 'text/javascript' ){
 	    console.error('Invalid Responce for TS-code');
 	    return;
