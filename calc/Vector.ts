@@ -74,7 +74,6 @@ export default class Vector extends Array<number> {
     throw new Error('!!! Vector.dot Invaild Type !!!');
   }
 
-
   outerProduct(other: Vector | ComplexVector): Matrix | ComplexMatrix {
       const mat = other instanceof Vector ? new Matrix(this.length, other.length) : new ComplexMatrix(this.length, other.length);
       for( let i=0; i<this.length; i++ ){
