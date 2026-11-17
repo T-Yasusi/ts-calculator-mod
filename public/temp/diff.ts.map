@@ -1,1 +1,0 @@
-{"version":3,"names":[],"sources":["/home/kentaro/local/github/ts-calculator/calc/diff.ts"],"sourcesContent":["import forward from './diff/forward.js';\nimport central from './diff/central.js';\nimport backward from './diff/backward.js';\n"],"mappings":"AAAA,OAAO,OAAO,MAAM,mBAAmB;AACvC,OAAO,OAAO,MAAM,mBAAmB;AACvC,OAAO,QAAQ,MAAM,oBAAoB","ignoreList":[]}

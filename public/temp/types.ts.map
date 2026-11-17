@@ -1,1 +1,0 @@
-{"version":3,"names":[],"sources":["/home/kentaro/local/github/ts-calculator/calc/types.ts"],"sourcesContent":["import { Complex } from './Complex.ts'\n\nexport type NumericalNum = number | Complex;\n"],"mappings":"AAAA,SAAS,OAAO,QAAQ,cAAc;AAEtC,OAAO,KAAK,YAAY,GAAG,MAAM,GAAG,OAAO","ignoreList":[]}
