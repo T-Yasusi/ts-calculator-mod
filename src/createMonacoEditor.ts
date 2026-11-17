@@ -1,6 +1,6 @@
 import * as monaco from 'monaco-editor';
 
-export default function(htmlElement){
+export default function(htmlElement: HTMLElement){
     return monaco.editor.create(htmlElement, {
         language: 'typescript',
         theme: 'vs-dark',

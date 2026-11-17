@@ -7,24 +7,28 @@ import operator_overload from './util/operator_overload.js'
 import ts_compile from './util/ts_compile.js'
 
 const inputFile = process.argv[2];
+if( !fs.existsSync(inputFile) ){
+    console.log('not found input file');
+    process.exit(0);
+}
 
-const inputCode = fs.readFileSync(inputFile);
-const { code, map } = operator_overload(inputCode, inputFile)
-
+console.log(`Test: ${inputFile} START`);
 const tsFile = inputFile.replace('test', '.test');
 const jsFile = tsFile.replace('.ts', '.js');
-console.log(tsFile);
+
+const { code, map } = operator_overload(fs.readFileSync(inputFile), inputFile)
 
 fs.mkdirSync('.test', { recursive: true });
 fs.writeFileSync(tsFile, code, 'utf-8');
 fs.writeFileSync(tsFile + '.map', JSON.stringify(map), 'utf-8');
+console.log('Pre-compile[Operator Overload] FINISH');
 
 ts_compile(tsFile, { rootDir: null, outDir: './' });
-
+console.log('TS-compile FINISH');
 execSync(`node ${jsFile}`, { stdio: 'inherit' });
+console.log('Test Finish');
 
 rmDir('.test');
-
 function rmDir(dir){
     console.log('> remove ', dir);
     for (const file of fs.readdirSync(dir)) {
