@@ -9,15 +9,12 @@ document.getElementById('template')?.addEventListener('change', async (e)=> {
     const value = (e.target as HTMLSelectElement).value;
     if( value === 'no-code' ) editor.setValue('');
     else{
-	console.log(value);
         const response = await fetch(`./${value}`);
-	console.log(response.headers.get('content-type'));
-//	if( response.headers.get('content-type') !== 'text/javascript' ){
-//	    console.error('Invalid Responce for TS-code');
-	//	    return;
-    // }
-        const code = (await response.text());
-	editor.setValue(code);
+	if( response.ok ){
+            const code = (await response.text());
+	    editor.setValue(code);
+	}
+	else console.error('Invalid Responce: read template code');
     }
 });
 document.getElementById('template')?.dispatchEvent(new Event('change'));
