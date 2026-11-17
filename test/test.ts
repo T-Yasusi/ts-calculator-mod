@@ -1,5 +1,5 @@
-import { Complex } from '../temp/Complex.ts'
-import { sub } from '../temp/operators.ts'
+import { Complex } from '../lib/Complex.js'
+import { sub } from '../lib/operators.js'
 
 const z1 = new Complex(1, 1);
 const z2 = new Complex(2, 1);

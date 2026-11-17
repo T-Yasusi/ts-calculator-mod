@@ -14,7 +14,6 @@ if( !fs.existsSync(inputFile) ){
 
 console.log(`Test: ${inputFile} START`);
 const tsFile = inputFile.replace('test', '.test');
-const jsFile = tsFile.replace('.ts', '.js');
 
 const { code, map } = operator_overload(fs.readFileSync(inputFile), inputFile)
 
@@ -22,11 +21,7 @@ fs.mkdirSync('.test', { recursive: true });
 fs.writeFileSync(tsFile, code, 'utf-8');
 fs.writeFileSync(tsFile + '.map', JSON.stringify(map), 'utf-8');
 console.log('Pre-compile[Operator Overload] FINISH');
-
-ts_compile(tsFile, { rootDir: null, outDir: './' });
-console.log('TS-compile FINISH');
-execSync(`node ${jsFile}`, { stdio: 'inherit' });
-console.log('Test Finish');
+execSync(`node ${tsFile}`, { stdio: 'inherit' });
 
 rmDir('.test');
 function rmDir(dir){
