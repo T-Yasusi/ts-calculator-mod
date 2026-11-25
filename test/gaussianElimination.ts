@@ -1,7 +1,8 @@
 import { Complex, Vector, Matrix, ComplexVector, ComplexMatrix } from '../lib/classes.js';
 import { add, sub, mul, div, neg } from '../lib/operators.js';
-import { gaussianElimination } from '../lib/linearAlgebra.js';
+import { gaussianElimination, createUnitMatrix } from '../lib/linearAlgebra.js';
 import { abs2 } from '../lib/functions.js'
+import { approxMatrix } from '../lib/test.js'
 
 function randomInt(min: number, max: number): number { return Math.floor(Math.random() * (max - min + 1)) + min; }
 const N=8;
@@ -21,10 +22,6 @@ for( let i=0; i<N; i++ ){
 const invA = gaussianElimination(A);
 const invC = gaussianElimination(C);
 
-console.log('A = \n', A.toPrecision(8));
-console.log('A = \n', invA.toPrecision(8));
-console.log('A*invA = \n', (A*invA).toPrecision(8));
+approxMatrix(A*invA, createUnitMatrix(N));
+approxMatrix(C*invC, createUnitMatrix(N));
 
-console.log('C = \n', C.toPrecision(8));
-console.log('C = \n', invC.toPrecision(8));
-console.log('C*invC = \n', (C*invC).toPrecision(8));

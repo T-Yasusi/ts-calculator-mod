@@ -14,6 +14,11 @@ if( !fs.existsSync(inputFile) ){
 
 console.log(`Test: ${inputFile} START`);
 const tsFile = inputFile.replace('test', '.test');
+try{ execSync('node cli/lib_compile.js'); }
+catch(e){
+    console.log('lib compile failed');
+    process.exit(1);
+}
 
 const { code, map } = operator_overload(fs.readFileSync(inputFile), inputFile)
 

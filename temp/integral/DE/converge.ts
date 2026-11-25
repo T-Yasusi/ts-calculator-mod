@@ -5,7 +5,8 @@ import { abs } from '../../functions.js';
 export default function converge(g: (x: NumericalNum) => NumericalNum, threshold: number, max_range: number): number {
   while (!Number.isFinite(abs(g(neg(max_range)))) || !Number.isFinite(abs(g(max_range)))) {
     max_range = mul(0.5, max_range);
-    if (max_range < 1.0e-3) throw new Error('!!! integral.minusInfToInf not converged function !!!');
+    //	console.log(g(-max_range), g(max_range));
+    if (max_range < 1.0e-3) throw new Error('!!! DE integration not converged function !!!');
   }
   //    console.log('max_range :', max_range);
 
@@ -16,10 +17,10 @@ export default function converge(g: (x: NumericalNum) => NumericalNum, threshold
   let val1 = trapezoid(g, neg(range), range);
   while (abs(sub(val0, val1)) as number > threshold) {
     range = add(range, step);
-    if (range > max_range) throw new Error('!!! integral.minusInfToInf not converged !!!');
+    if (range > max_range) throw new Error('!!! DE integration not converged !!!');
     val0 = val1;
     val1 = trapezoid(g, neg(range), range);
-    //       console.log(range, val0, val1);
+    //	console.log(range, val0, val1);
   }
   return val1 as number;
 }
